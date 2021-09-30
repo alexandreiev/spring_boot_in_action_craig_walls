@@ -1,0 +1,10 @@
+logging:
+# specify alternative file location
+#  path: /var/logs/
+#  file: BookWorm.log
+# alternative log config file name
+#  config:
+#    classpath:logging-config.xml
+  level:
+    root: WARN
+    org.springframework.security: DEBUG
