@@ -1,5 +1,5 @@
-<onfiguration>
-    <appender name="STDOUT" class="ch.qos.logbach.core.ConsoleAppender">
+<configuration>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
             <pattern>
                 %d{HH:mm:ss:SSS} [%thread] %-5level %logger{36} - %msg%n
@@ -11,4 +11,4 @@
     <root level="INFO">
         <appender-ref ref="STDOUT" />
     </root>
-</onfiguration>
+</configuration>
