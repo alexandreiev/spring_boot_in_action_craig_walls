@@ -1,27 +1,17 @@
 package com.andreiev.readinglist;
 
-import lombok.Getter;
-import lombok.Setter;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.properties.ConfigurationProperties;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/")
-@ConfigurationProperties(prefix="amazon")  // inject with properties
+@AllArgsConstructor
 public class ReadingListController {
 
-    @Getter
-    @Setter
-    private String associateId;
     private ReadingListRepository readingListRepository;
-
-    @Autowired
-    public ReadingListController( ReadingListRepository readingListRepository) {
-        this.readingListRepository = readingListRepository;
-    }
+    private AmazonProperties amazonProperties;
 
     @GetMapping("/{reader}")
     public String readersBooks(@PathVariable("reader") String reader, Model model) {
@@ -29,7 +19,7 @@ public class ReadingListController {
         if (readingList != null) {
             model.addAttribute("books", readingList);
             model.addAttribute("reader", reader);
-            model.addAttribute("amazonID", associateId);
+            model.addAttribute("amazonID", amazonProperties.getAssociateId());
         }
         return "readingList";
     }
