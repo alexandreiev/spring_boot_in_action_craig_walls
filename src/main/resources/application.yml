@@ -7,10 +7,9 @@ logging:
 #    classpath:logging-config.xml
   level:
     root: WARN
-    org.springframework.security: DEBUG
-
-#  MySQL datasource config
-#spring:
+    org.springframework:
+      security: INFO
+      boot.autoconfigure.security: INFO
 #  datasource:
 #    url: jdbc:mysql://localhost/readinglist
 #    username: dbuser
