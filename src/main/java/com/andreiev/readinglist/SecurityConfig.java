@@ -29,19 +29,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .failureUrl("/login?error=true")
                 .and()
                 .csrf().disable()
-                .csrf().ignoringAntMatchers("/h2-console/**")
+                .logout()
+                    .permitAll()
                 .and().headers().frameOptions().sameOrigin() // for correct h2-console displaying
         ;
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        // define custom UserDetailsService
         auth
-                .userDetailsService(new UserDetailsService() {  // define custom UserDetailsService
-                    @Override
-                    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-                        return readerRepository.findById(username).orElse(null);
-                    }
-                });
+                .userDetailsService(username -> readerRepository.findById(username).orElse(null));
     }
 }
