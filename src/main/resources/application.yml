@@ -1,3 +1,5 @@
+# Common properties
+
 logging:
 # specify alternative file location
 #  path: /var/logs/
@@ -24,3 +26,23 @@ logging:
 
 amazon:
   associateId: habuma-20
+
+---
+# only for development profile
+spring:
+  profiles: development
+
+logging:
+  level:
+    root: DEBUG
+
+---
+# only for production profile
+spring:
+  profiles: production
+
+logging:
+  path: /tmp/
+  file: BookWorm.log
+  level:
+    root: WARN
