@@ -28,6 +28,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                     .loginPage("/login")  // set login form path
                     .failureUrl("/login?error=true")
+                .loginProcessingUrl("login")
                 .and()
                 .csrf().disable()
                 .logout()
