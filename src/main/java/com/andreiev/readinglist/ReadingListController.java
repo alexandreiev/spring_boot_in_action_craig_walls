@@ -6,7 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/readers")
 @AllArgsConstructor
 public class ReadingListController {
 
@@ -28,6 +28,6 @@ public class ReadingListController {
     public String addToReadingList(@PathVariable("reader") String reader, Book book) {
         book.setReader(reader);
         readingListRepository.save(book);
-        return "redirect:/{reader}";
+        return "redirect:/readers/{reader}";
     }
 }
