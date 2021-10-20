@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Reading List</title>
-    <link rel="stylesheet" th:href="@{/css/style.css}"></link>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
 </head>
 <body>
     <h2>Your Reading List</h2>
@@ -21,8 +21,7 @@
                 <span th:if="${book.description}"
                       th:text="${book.description}">Description</span>
                 <span th:if="${book.description eq null}">
-                    No description available
-                </span>
+                    No description available </span>
             </dd>
         </dl>
     </div>
@@ -44,8 +43,8 @@
         <input type="text" name="isbn" size="15"></input><br/>
 
         <label for="description">Description:</label>
-        <input type="text" name="description" cols="80" rows="5"></input><br/>
         <textarea name="description" cols="80" rows="5"></textarea><br/>
+
         <input type="submit"></input>
     </form>
 </body>
